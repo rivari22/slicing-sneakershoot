@@ -1,10 +1,10 @@
 <template>
-  <b-container class="container-rule container-custom-detail bg-gray-100">
+  <div class="container-rule container-custom-detail bg-gray-100 w-100 mr-auto ml-auto" fluid>
     <HeaderDetail
       :product="productDetail"
     />
     <ContentDetail :product="productDetail" />
-  </b-container>
+  </div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="container-content-detail" fluid>
+  <b-container class="container-content-detail">
     <b-row>
       <b-col>
         <div class="h6">
@@ -101,8 +101,9 @@ export default {
   border-top-right-radius: 60px;
   border-top-left-radius: 60px;
   background-color: #f3f4f6;
-  width: 576px !important;
-  margin: 80px 0 0 -15px;
+  width: 100%;
+  max-width: 576px !important;
+  margin-top: 70px;
   padding: 40px 36px 60px 36px;
 }
 .column-space-custom {

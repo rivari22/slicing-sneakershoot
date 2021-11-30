@@ -40,7 +40,6 @@ export default {
 
 <style scoped>
 .container-header {
-  padding-top: 50px;
-  padding-bottom: 70px;
+  padding: 50px 30px 70px 30px;
 }
 </style>
