@@ -1,8 +1,9 @@
 <template>
-  <b-container class="container-custom bg-gray-100 h-100">
+  <b-container class="container-rule container-custom bg-gray-100 h-100">
     <Header />
     <FilterBrand />
     <CardList />
+    <BottomCart />
   </b-container>
 </template>
 
@@ -20,6 +21,6 @@ export default Vue.extend({});
 .container-custom {
   max-width: 576px !important;
   background-color: #f3f4f6;
-  padding-bottom: 100px;
+  padding-bottom: 140px;
 }
 </style>

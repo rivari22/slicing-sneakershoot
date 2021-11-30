@@ -1,14 +1,13 @@
 <template>
-  <b-container class="container-custom-detail bg-gray-100">
+  <b-container class="container-rule container-custom-detail bg-gray-100">
     <HeaderDetail
-      :image="productDetail.image"
-      :isfavorite="productDetail.isFavorite"
+      :product="productDetail"
     />
     <ContentDetail :product="productDetail" />
   </b-container>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue';
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 
@@ -25,8 +24,6 @@ export default {
 
 <style>
 .container-custom-detail {
-  max-width: 576px !important;
   background-color: #a9a6d5 !important;
-  /* padding-bottom: 100px; */
 }
 </style>

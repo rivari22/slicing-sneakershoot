@@ -18,17 +18,13 @@
       </b-col>
     </b-row>
     <b-row class="row-options">
-      <b-col cols="2" class="column-space-custom">
-        <CardMini />
-      </b-col>
-      <b-col cols="2" class="column-space-custom">
-        <CardMini />
-      </b-col>
-      <b-col cols="2" class="column-space-custom">
-        <CardMini />
-      </b-col>
-      <b-col cols="2" class="column-space-custom">
-        <CardMini />
+      <b-col
+        v-for="variant in product.size"
+        :key="variant.id"
+        cols="2"
+        class="column-space-custom"
+      >
+        <CardMini :variant="variant" />
       </b-col>
     </b-row>
     <b-row>
@@ -39,34 +35,36 @@
       </b-col>
     </b-row>
     <b-row class="row-options">
-      <b-col cols="2" class="column-space-custom">
-        <CardMini />
-      </b-col>
-      <b-col cols="2" class="column-space-custom">
-        <CardMini />
-      </b-col>
-      <b-col cols="2" class="column-space-custom">
-        <CardMini />
-      </b-col>
-      <b-col cols="2" class="column-space-custom">
-        <CardMini />
+      <b-col
+        v-for="color in product.color"
+        :key="color.id"
+        cols="2"
+        class="column-space-custom"
+      >
+        <CardMini :variant="color" :coloroption="true" />
       </b-col>
     </b-row>
     <b-row align-v="center" class="mt-5">
       <b-col>
         <b-row
-          class="rounded-custom-md border border-light shadow-sm p-3 bg-warning"
+          class="rounded-custom-md border border-light shadow-sm p-3 primary-bg-color"
           align-v="center"
         >
           <b-col class="mr-auto text-white" cols="6">
-            IDR {{ product.price }}
+            {{ currencyFormatter(+product.price) }}
           </b-col>
-          <b-col>
+          <b-col class="ml-4">
             <div
-              class="d-flex align-items-center justify-content-around rounded-custom-md border border-light shadow-sm p-2 bg-white"
+              class="container-add-cart d-flex align-items-center justify-content-around rounded-custom-md border border-light shadow-sm p-2 bg-white"
+              @click="
+                () =>
+                  !product.isInTheCart ? addToCart({ product }) : undefined
+              "
             >
               <b-icon icon="cart2" font-scale="1.5" variant="black" flip-h />
-              <div>Add to cart</div>
+              <div class="cursor-pointer-custom">
+                <strong>Add to cart</strong>
+              </div>
             </div>
           </b-col>
         </b-row>
@@ -75,24 +73,40 @@
   </b-container>
 </template>
 
-<script>
+<script lang="ts">
+import { mapMutations } from 'vuex';
+import { currencyFormatter } from '@/utils/currencyFormatter'
+
 export default {
-  props: ['product']
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    ...mapMutations({
+      setFavorite: 'setFavorite',
+      addToCart: 'addToCart'
+    }),
+    currencyFormatter: (value: number) => {
+      return currencyFormatter(value)
+    }
+  }
 };
 </script>
 
 <style scoped>
 .container-content-detail {
-  margin-top: 80px;
-  border-top-right-radius: 24px;
-  border-top-left-radius: 24px;
+  border-top-right-radius: 60px;
+  border-top-left-radius: 60px;
   background-color: #f3f4f6;
   width: 576px !important;
-  margin-left: -15px;
-  padding: 20px 32px 30px 32px;
+  margin: 80px 0 0 -15px;
+  padding: 40px 36px 60px 36px;
 }
 .column-space-custom {
-  margin-right: -30px;
+  margin-right: -20px;
 }
 .name-product {
   margin-top: -8px;
@@ -106,5 +120,8 @@ export default {
 .row-options {
   margin-top: -4px;
   margin-bottom: 14px;
+}
+.container-add-cart {
+  width: 180px;
 }
 </style>

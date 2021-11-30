@@ -1,0 +1,39 @@
+body {
+    background-color: grey !important;
+}
+
+.container-rule {
+    max-width: 576px !important;
+}
+
+.cursor-pointer-custom:hover {
+    cursor: pointer;
+}
+
+.primary-color {
+    color: #FF8901;
+}
+
+.primary-bg-color {
+    background-color: #FF8901;
+}
+
+.rounded-custom {
+    border-radius: 12px;
+}
+.rounded-custom-md {
+    border-radius: 24px;
+}
+
+.color-grey {
+    background-color: grey;
+}
+.color-black {
+    background-color: black;
+}
+.color-green {
+    background-color: green;
+}
+.color-red {
+    background-color: red;
+}

@@ -8,15 +8,20 @@
       </b-col>
       <b-col cols="auto">
         <b-icon
-          :icon="`${isfavorite ? 'suit-heart-fill' : 'suit-heart'}`"
+          class="cursor-pointer-custom"
+          :icon="`${product.isfavorite ? 'suit-heart-fill' : 'suit-heart'}`"
           font-scale="1.5"
-          :variant="`${isfavorite ? 'danger' : 'white'}`"
+          :variant="`${product.isfavorite ? 'danger' : 'white'}`"
+          @click="
+            () =>
+              setFavorite({ id: product.id, isFavorite: !product.isFavorite })
+          "
         />
       </b-col>
     </b-row>
     <b-row align-h="center">
       <b-col cols="auto">
-        <b-img :src="require(`@/assets/img/${image}`)" center />
+        <b-img :src="require(`@/assets/img/${product.image}`)" center />
       </b-col>
     </b-row>
   </b-container>
@@ -24,13 +29,18 @@
 
 <script>
 export default {
-  props: ['image', 'isfavorite']
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>
 
 <style scoped>
 .container-header {
-  padding-top: 80px;
-  padding-bottom: 40px;
+  padding-top: 50px;
+  padding-bottom: 70px;
 }
 </style>

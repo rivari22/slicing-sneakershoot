@@ -19,6 +19,6 @@ export default {
 
 <style scoped>
     .container-header {
-        padding-top: 80px;
+        padding-top: 50px;
     }
 </style>

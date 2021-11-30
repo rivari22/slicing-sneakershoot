@@ -26,28 +26,29 @@
           <span class="ml-2"><strong>Filter</strong></span>
         </div>
       </b-col>
-      <b-col cols="auto">
+      <b-col cols="auto" class="column-merk">
         <div
           class="d-inline-flex align-items-center border p-2 bg-white border-light shadow-sm rounded-custom"
+          @click="() => console.log('helo')"
         >
           Nike
         </div>
       </b-col>
-      <b-col cols="auto">
+      <b-col cols="auto" class="column-merk">
         <div
           class="d-inline-flex align-items-center border p-2 bg-white border-light shadow-sm rounded-custom"
         >
           Adidas
         </div>
       </b-col>
-      <b-col cols="auto">
+      <b-col cols="auto" class="column-merk">
         <div
           class="d-inline-flex align-items-center border p-2 bg-white border-light shadow-sm rounded-custom"
         >
           Puma
         </div>
       </b-col>
-      <b-col cols="auto">
+      <b-col cols="auto" class="column-merk">
         <div
           class="d-inline-flex align-items-center border p-2 bg-white border-light shadow-sm rounded-custom"
         >
@@ -59,11 +60,19 @@
 </template>
 
 <script>
-export default {};
+import { mapMutations } from 'vuex'
+
+export default {
+  methods: {
+    ...mapMutations({
+      setFilterProduct: 'setFilterProduct'
+    })
+  }
+};
 </script>
 
-<style>
-.rounded-custom {
-  border-radius: 12px;
-}
+<style scoped>
+  .column-merk {
+    margin-right: -20px;
+  }
 </style>

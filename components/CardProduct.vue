@@ -5,19 +5,27 @@
     <b-row align-v="center" align-content="center">
       <b-col cols="auto" class="mr-auto">
         <b-icon
+          class="cursor-pointer-custom"
           :icon="`${product.isFavorite ? 'suit-heart-fill' : 'suit-heart'}`"
           font-scale="1.5"
           :variant="`${product.isFavorite ? 'danger' : 'secondary'}`"
-          @click="() => setFavorite({index, isFavorite: !product.isFavorite})"
+          @click="
+            () =>
+              setFavorite({ id: product.id, isFavorite: !product.isFavorite })
+          "
         />
       </b-col>
       <b-col cols="auto">
         <b-icon
+          class="cursor-pointer-custom"
           icon="plus"
           font-scale="2.5"
           shift-v="1"
           shift-h="2"
-          variant="warning"
+          :variant="`${product.isInTheCart ? 'dark' : 'warning'}`"
+          @click="
+            () => (!product.isInTheCart ? addToCart({ product }) : undefined)
+          "
         />
       </b-col>
     </b-row>
@@ -40,7 +48,9 @@
       </b-row>
       <b-row align-h="center">
         <b-col cols="auto">
-          <p class="text-center text-warning h6">IDR {{ product.price }}</p>
+          <p class="text-center text-warning h6">
+            {{ currencyFormatter(+product.price) }}
+          </p>
         </b-col>
       </b-row>
     </NuxtLink>
@@ -48,14 +58,24 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations } from 'vuex';
+import { currencyFormatter } from '@/utils/currencyFormatter'
 
 export default {
-  props: ['product', 'index'],
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
     ...mapMutations({
-      setFavorite: 'setFavorite'
-    })
+      setFavorite: 'setFavorite',
+      addToCart: 'addToCart'
+    }),
+    currencyFormatter: (value) => {
+      return currencyFormatter(value)
+    }
   }
 };
 </script>
@@ -64,11 +84,9 @@ export default {
 .container-card {
   max-width: 220px !important;
   margin-top: 100px;
+  height: 300px;
 }
 .text-card-product {
   font-size: 0.8em;
-}
-.rounded-custom-md {
-  border-radius: 24px;
 }
 </style>
