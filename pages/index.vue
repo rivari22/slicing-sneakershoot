@@ -7,19 +7,19 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+import Vue from 'vue';
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 
-Vue.use(BootstrapVue)
-Vue.use(BootstrapVueIcons)
+Vue.use(BootstrapVue);
+Vue.use(BootstrapVueIcons);
 
-export default Vue.extend({})
+export default Vue.extend({});
 </script>
 
 <style>
 .container-custom {
   max-width: 576px !important;
-  background-color: #F3F4F6;
+  background-color: #f3f4f6;
   padding-bottom: 100px;
-  }
+}
 </style>

@@ -2,15 +2,19 @@
   <b-container class="container-content-detail" fluid>
     <b-row>
       <b-col>
-        <div class="h6"><strong>Jordan</strong></div>
+        <div class="h6">
+          <strong>{{ product.merk }}</strong>
+        </div>
         <p class="text-muted name-product">
-          Jordan 1 High Element Gore-Tex Light Bone
+          {{ product.name }}
         </p>
       </b-col>
     </b-row>
     <b-row>
       <b-col>
-        <p class="text-muted option-label">Size</p>
+        <p class="text-muted option-label">
+          Size
+        </p>
       </b-col>
     </b-row>
     <b-row class="row-options">
@@ -29,7 +33,9 @@
     </b-row>
     <b-row>
       <b-col>
-        <p class="text-muted option-label">Color</p>
+        <p class="text-muted option-label">
+          Color
+        </p>
       </b-col>
     </b-row>
     <b-row class="row-options">
@@ -52,7 +58,9 @@
           class="rounded-custom-md border border-light shadow-sm p-3 bg-warning"
           align-v="center"
         >
-          <b-col class="mr-auto" cols="6">IDR 1000</b-col>
+          <b-col class="mr-auto text-white" cols="6">
+            IDR {{ product.price }}
+          </b-col>
           <b-col>
             <div
               class="d-flex align-items-center justify-content-around rounded-custom-md border border-light shadow-sm p-2 bg-white"
@@ -68,7 +76,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['product']
+};
 </script>
 
 <style scoped>
